@@ -1,0 +1,67 @@
+<!-- templates/donors/patient_list.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* Custom CSS for the table */
+    .table {
+        margin-top: 2rem;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+    }
+
+    /* Custom CSS for the header */
+    h2 {
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    /* Custom CSS for the container */
+    .content-container {
+        max-width: 900px;
+        margin: auto;
+        padding: 2rem;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Custom CSS for the button */
+    .btn-primary {
+        display: block;
+        width: 200px;
+        margin: 2rem auto 0;
+    }
+</style>
+
+<div class="container content-container">
+    <h2>Patients Needing Blood</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Blood Group Needed</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>Request Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+            <tr>
+                <td>{{ patient.name }}</td>
+                <td>{{ patient.blood_group_needed }}</td>
+                <td>{{ patient.phone_number }}</td>
+                <td>{{ patient.address }}</td>
+                <td>{{ patient.request_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'patient_create' %}" class="btn btn-primary">Need Blood</a>
+</div>
+{% endblock %}

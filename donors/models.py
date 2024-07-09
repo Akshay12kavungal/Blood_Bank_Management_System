@@ -16,24 +16,21 @@ BLOOD_GROUP_CHOICES = [
 ]
 
 class Donor(models.Model):
-
-    
-    user=models.OneToOneField(User, on_delete=models.CASCADE)
-    blood_group=models.CharField(max_length=3, choices=BLOOD_GROUP_CHOICES)
-    phone_number=models.CharField(max_length=15)
-    address=models.TextField()
-    availability=models.BooleanField(default=True)
+    name = models.CharField(max_length=100, default='')
+    blood_group = models.CharField(max_length=3, choices=BLOOD_GROUP_CHOICES)
+    phone_number = models.CharField(max_length=15, default='')
+    address = models.CharField(max_length=15, default='')
+    availability = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.user.username} ({self.blood_group})"
-
+        return f"Donor {self.name} ({self.blood_group})"
 
 class Patient(models.Model):
-    user=models.OneToOneField(User, on_delete=models.CASCADE)
-    blood_group_needed=models.CharField(max_length=3,choices=BLOOD_GROUP_CHOICES)
-    phone_number=models.CharField(max_length=15)
-    address=models.TextField()
-    request_date=models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=100, default='')
+    blood_group_needed = models.CharField(max_length=3, choices=BLOOD_GROUP_CHOICES)
+    phone_number = models.CharField(max_length=15, default='')
+    address = models.CharField(max_length=15, default='')
+    request_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.username} needs {self.blood_group_needed}"
+        return f"Patient {self.name} needs {self.blood_group_needed}"
