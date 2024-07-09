@@ -1,0 +1,78 @@
+<!-- templates/patient/patient_form.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* Custom CSS for form container */
+    .form-container {
+        max-width: 600px;
+        margin: auto;
+        padding: 2rem;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem; /* Adjust spacing between form fields */
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="date"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="email"]:focus,
+    input[type="date"]:focus,
+    textarea:focus,
+    select:focus {
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        border-color: #80bdff;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="form-container">
+        <h2>{{ form.instance.pk|yesno:"Edit Patient,Add Patient" }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.name.label_tag }}
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                {{ form.blood_group_needed.label_tag }}
+                {{ form.blood_group_needed }}
+            </div>
+            <div class="form-group">
+                {{ form.phone_number.label_tag }}
+                {{ form.phone_number }}
+            </div>
+            <div class="form-group">
+                {{ form.address.label_tag }}
+                {{ form.address }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{% url 'patient_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

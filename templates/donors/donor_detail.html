@@ -1,0 +1,14 @@
+<!-- templates/donors/donor_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Donor Details</h2>
+<p>Username: {{ donor.user.username }}</p>
+<p>Blood Group: {{ donor.blood_group }}</p>
+<p>Phone Number: {{ donor.phone_number }}</p>
+<p>Address: {{ donor.address }}</p>
+<p>Availability: {{ donor.availability|yesno:"Yes,No" }}</p>
+<a href="{% url 'donor_update' donor.pk %}" class="btn btn-primary">Edit</a>
+<a href="{% url 'donor_delete' donor.pk %}" class="btn btn-danger">Delete</a>
+{% endblock %}

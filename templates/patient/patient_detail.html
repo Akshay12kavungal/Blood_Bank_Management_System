@@ -1,0 +1,12 @@
+<!-- templates/patient/patient_detail.html -->
+
+{% extends "base.html" %}
+{% block content %}
+  <h1>Patient: {{ patient.name }}</h1>
+  <p><strong>Age:</strong> {{ patient.age }}</p>
+  <p><strong>Blood Group:</strong> {{ patient.blood_group }}</p>
+  <!-- Add more patient details here -->
+  <a href="{% url 'patient_update' patient.pk %}" class="btn btn-warning">Edit</a>
+  <a href="{% url 'patient_delete' patient.pk %}" class="btn btn-danger">Delete</a>
+  <a href="{% url 'patient_list' %}" class="btn btn-secondary">Back to List</a>
+{% endblock %}
