@@ -1,8 +1,25 @@
-# Ignore node_modules
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+
+# Ignore environment variables
+.env
+
+# Ignore IDE specific files
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore node_modules folder
 node_modules/
 
-# Ignore log files
-*.log
+# Ignore compiled files
+*.o
+*.obj
+*.so
+*.dll
 
-# Ignore environment files
-.env
+# Ignore logs and temporary files
+logs/
+*.log
+tmp/
